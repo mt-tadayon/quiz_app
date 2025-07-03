@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/styled_text.dart';
+import 'package:quiz_app/widget/styled_text_widget.dart';
 
-class HomeInput extends StatelessWidget {
-  const HomeInput({super.key, required this.imagePath});
+class StartScreen extends StatelessWidget {
+  const StartScreen({super.key, required this.imagePath});
 
   final String imagePath;
 
@@ -18,13 +18,15 @@ class HomeInput extends StatelessWidget {
             color: const Color.fromARGB(150, 255, 255, 255),
           ),
           SizedBox(height: 20),
-          StyledText('Learn Flutter the fun way!'),
+          StyledTextWidget('Learn Flutter the fun way!'),
           SizedBox(height: 20),
           OutlinedButton.icon(
             style: OutlinedButton.styleFrom(
               foregroundColor: Colors.white,
             ),
-            onPressed: () {},
+            onPressed: () {
+              // navigate to other screen
+            },
             icon: const Icon(
               Icons.arrow_right_alt,
               color: Colors.white,

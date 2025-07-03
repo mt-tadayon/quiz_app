@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/home_input.dart';
+import 'package:quiz_app/quiz.dart';
+import 'package:quiz_app/start_screen.dart';
 
 void main() {
   return runApp(MyApp());
@@ -10,23 +11,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                Colors.deepPurple,
-                Colors.purple,
-              ],
-            ),
-          ),
-          child: HomeInput(
-            imagePath: 'assets/images/quiz-logo.png',
-          ),
-        ),
+    return Quiz(
+      screen: StartScreen(
+        imagePath: 'assets/images/quiz-logo.png',
       ),
     );
   }
