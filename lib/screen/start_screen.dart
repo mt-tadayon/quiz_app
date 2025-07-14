@@ -2,18 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:quiz_app/widget/styled_text_widget.dart';
 
 class StartScreen extends StatelessWidget {
-  const StartScreen({super.key, required this.imagePath});
+  const StartScreen(
+    this.startQuiz, {
+    super.key,
+  });
 
-  final String imagePath;
+  final Function() startQuiz;
 
   @override
-  Widget build(context) {
+  Widget build(context) { 
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Image.asset(
-            imagePath,
+            'assets/images/quiz-logo.png',
             width: 300,
             color: const Color.fromARGB(150, 255, 255, 255),
           ),
@@ -24,9 +27,7 @@ class StartScreen extends StatelessWidget {
             style: OutlinedButton.styleFrom(
               foregroundColor: Colors.white,
             ),
-            onPressed: () {
-              // navigate to other screen
-            },
+            onPressed: startQuiz,
             icon: const Icon(
               Icons.arrow_right_alt,
               color: Colors.white,
