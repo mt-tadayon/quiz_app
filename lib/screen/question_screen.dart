@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/data/questions.dart';
+import 'package:quiz_app/widget/asnwer_button_widget.dart';
+import 'package:quiz_app/widget/styled_text_widget.dart';
 
 class QuestionScreen extends StatefulWidget {
   const QuestionScreen({super.key});
@@ -8,10 +11,24 @@ class QuestionScreen extends StatefulWidget {
 }
 
 class _QuestionScreenState extends State<QuestionScreen> {
+  final currentQuestion = questions[0];
+
   @override
   Widget build(BuildContext context) {
-    return Text(
-      'Question Screen',
+    return Padding(
+      padding: const EdgeInsets.all(32.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          StyledTextWidget(currentQuestion.question),
+          SizedBox(height: 3),
+          ...currentQuestion
+              .getSchuffleAnswers()
+              .map<Widget>((answer) => AsnwerButtonWidget(answer, () {}))
+              .toList(),
+        ],
+      ),
     );
   }
 }
