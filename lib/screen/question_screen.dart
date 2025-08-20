@@ -11,10 +11,20 @@ class QuestionScreen extends StatefulWidget {
 }
 
 class _QuestionScreenState extends State<QuestionScreen> {
-  final currentQuestion = questions[0];
+  var currentQuestionIndex = 0;
+  var currentQuestion = questions[0];
 
   @override
   Widget build(BuildContext context) {
+    void answerQuestion() {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < questions.length) {
+        setState(() {
+          currentQuestion = questions[currentQuestionIndex];
+        });
+      }
+    }
+
     return Padding(
       padding: const EdgeInsets.all(32.0),
       child: Column(
@@ -23,10 +33,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
         children: [
           StyledTextWidget(currentQuestion.question),
           SizedBox(height: 3),
-          ...currentQuestion
-              .getSchuffleAnswers()
-              .map<Widget>((answer) => AsnwerButtonWidget(answer, () {}))
-              .toList(),
+          ...currentQuestion.getSchuffleAnswers().map<Widget>(
+              (answer) => AsnwerButtonWidget(answer, answerQuestion)),
         ],
       ),
     );
