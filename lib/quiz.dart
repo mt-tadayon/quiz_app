@@ -3,6 +3,8 @@ import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/screen/question_screen.dart';
 import 'package:quiz_app/screen/start_screen.dart';
 
+enum Screen { start, questions, answers }
+
 class Quiz extends StatefulWidget {
   const Quiz({
     super.key,
@@ -13,12 +15,12 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  String currentScreen = 'start-screen';
+  Screen currentScreen = Screen.start;
   List<String> selectedAnswers = [];
 
   void switchScreen() {
     setState(() {
-      currentScreen = 'question-screen';
+      currentScreen = Screen.questions;
     });
   }
 
@@ -27,14 +29,14 @@ class _QuizState extends State<Quiz> {
     if (selectedAnswers.length == questions.length) {
       setState(() {
         selectedAnswers = [];
-        currentScreen = 'start-screen';
+        currentScreen = Screen.start;
       });
     }
   }
 
   @override
   Widget build(context) {
-    Widget widgetScreen = currentScreen == 'start-screen'
+    Widget widgetScreen = currentScreen == Screen.start
         ? StartScreen(switchScreen)
         : QuestionScreen(onSelectAnswer: chooseAnswer);
 
