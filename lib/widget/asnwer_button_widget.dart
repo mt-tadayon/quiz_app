@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class AsnwerButtonWidget extends StatelessWidget {
-  const AsnwerButtonWidget(
-    this.text,
-    this.onTap, {
+class AnswerButtonWidget extends StatelessWidget {
+  const AnswerButtonWidget({
     super.key,
+    required this.text,
+    required this.onTap,
   });
 
   final String text;
