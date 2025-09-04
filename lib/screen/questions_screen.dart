@@ -3,8 +3,8 @@ import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/widget/asnwer_button_widget.dart';
 import 'package:quiz_app/widget/styled_text_widget.dart';
 
-class QuestionScreen extends StatefulWidget {
-  const QuestionScreen({
+class QuestionsScreen extends StatefulWidget {
+  const QuestionsScreen({
     super.key,
     required this.onSelectAnswer,
   });
@@ -12,10 +12,10 @@ class QuestionScreen extends StatefulWidget {
   final void Function(String answer) onSelectAnswer;
 
   @override
-  State<StatefulWidget> createState() => _QuestionScreenState();
+  State<StatefulWidget> createState() => _QuestionsScreenState();
 }
 
-class _QuestionScreenState extends State<QuestionScreen> {
+class _QuestionsScreenState extends State<QuestionsScreen> {
   var currentQuestionIndex = 0;
   var currentQuestion = questions[0];
 
